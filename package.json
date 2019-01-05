@@ -1,0 +1,13 @@
+{
+  "name": "cyclosm-basic-gl-style",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@mapbox/spritezero": "^6.1.0",
+    "json-stable-stringify": "^1.0.1",
+    "minimist": "^1.2.0",
+    "multiline": "^2.0.0",
+    "queue-async": "^1.2.1"
+  }
+}
