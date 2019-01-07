@@ -798,8 +798,8 @@
         "all",
         ["==", "$type", "Point"],
         ["in", "subclass",
-            "bicycle", "bicycle_rental", "cafe", "hospital", "post_office",
-            "post_box", "pub", "shelter", "toilets"
+            "bicycle", "bicycle_rental", "cafe", "drinking_water", "hospital",
+            "post_office", "post_box", "pub", "shelter", "toilets"
         ]
       ],
       "layout": {
@@ -818,7 +818,36 @@
         "text-halo-color": "#ffffff",
         "text-halo-width": 1
       }
-    }
-  ],
+    }, {
+      "id": "bicycle_parking",
+      "type": "circle",
+      "source": "openmaptiles",
+      "source-layer": "poi",
+      "minzoom": 16,
+      "filter": [
+        "all",
+        ["==", "$type", "Point"],
+        ["==", "subclass", "bicycle_parking"]
+      ],
+      "layout": {},
+      "paint": {
+        "circle-color": "rgba(0, 0, 255, 1)"
+      }
+    }, {
+      "id": "motorcycle_parking",
+      "type": "circle",
+      "source": "openmaptiles",
+      "source-layer": "poi",
+      "minzoom": 16,
+      "filter": [
+        "all",
+        ["==", "$type", "Point"],
+        ["==", "subclass", "motorcycle_parking"]
+      ],
+      "layout": {},
+      "paint": {
+        "circle-color": "rgba(255, 0, 0, 1)"
+      }
+    }],
   "id": "klokantech-basic"
 }
