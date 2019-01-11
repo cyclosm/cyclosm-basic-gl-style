@@ -264,7 +264,11 @@
         "all",
         ["==", "$type", "LineString"],
         ["in", "class", "path"],
-        ["==", "subclass", "cycleway"]
+        [
+          "any",
+          ["==", "subclass", "cycleway"],
+          ["==", "bicycle", 1]
+        ]
       ],
       "layout": {
         "line-cap": "square",
