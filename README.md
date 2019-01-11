@@ -10,6 +10,12 @@ style](https://github.com/openmaptiles/klokantech-basic-gl-style). Icons are
 taken from [OSM Bright GL
 style](https://github.com/openmaptiles/osm-bright-gl-style).
 
+**Note:** This is currently a Work In Progress and therefore requires some
+OpenMapTiles schema updata to have a full render. An up to date OpenMapTiles
+branch is available
+[here](https://github.com/Phyks/openmaptiles/tree/cyclosm). PRs will be
+systematically submitted to OpenMapTiles for each new addition.
+
 
 ## Usage
 
