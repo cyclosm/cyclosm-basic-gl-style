@@ -823,7 +823,7 @@
         "text-halo-width": 1
       }
     }, {
-      "id": "bicycle_parking",
+      "id": "amenities-bicycle_parking",
       "type": "circle",
       "source": "openmaptiles",
       "source-layer": "poi",
@@ -838,7 +838,7 @@
         "circle-color": "rgba(0, 0, 255, 1)"
       }
     }, {
-      "id": "motorcycle_parking",
+      "id": "amenities-motorcycle_parking",
       "type": "circle",
       "source": "openmaptiles",
       "source-layer": "poi",
@@ -851,6 +851,66 @@
       "layout": {},
       "paint": {
         "circle-color": "rgba(255, 0, 0, 1)"
+      }
+    }, {
+      "id": "bicycleroutes-lcn",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "bicycle_routes",
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["==", "network", "lcn"]
+      ],
+      "paint": {
+        "line-color": "rgb(0, 0, 255)",
+        "line-opacity": {"stops": [[8, 1], [11, 0.3]]},
+        "line-width": {"base": 1.4, "stops": [[8, 1], [12, 5]]}
+      }
+    }, {
+      "id": "bicycleroutes-rcn",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "bicycle_routes",
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["==", "network", "rcn"]
+      ],
+      "paint": {
+        "line-color": "rgb(180, 45, 255)",
+        "line-opacity": {"stops": [[8, 1], [11, 0.5]]},
+        "line-width": {"base": 1.4, "stops": [[8, 1], [12, 5]]}
+      }
+    }, {
+      "id": "bicycleroutes-ncn",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "bicycle_routes",
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["==", "network", "ncn"]
+      ],
+      "paint": {
+        "line-color": "rgb(255, 0, 0)",
+        "line-opacity": {"stops": [[8, 1], [11, 0.5]]},
+        "line-width": {"base": 1.4, "stops": [[8, 1], [12, 5]]}
+      }
+    }, {
+      "id": "bicycleroutes-icn",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "bicycle_routes",
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["==", "network", "icn"]
+      ],
+      "paint": {
+        "line-color": "rgb(0, 255, 0)",
+        "line-opacity": {"stops": [[8, 1], [11, 0.5]]},
+        "line-width": {"base": 1.4, "stops": [[8, 1], [12, 5]]}
       }
     }],
   "id": "klokantech-basic"
