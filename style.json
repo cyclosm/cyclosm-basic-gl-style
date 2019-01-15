@@ -1,19 +1,15 @@
 {
   "version": 8,
   "name": "CyclOSM",
-  "metadata": {
-    "mapbox:autocomposite": false,
-    "mapbox:type": "template",
-    "maputnik:renderer": "mbgljs",
-    "openmaptiles:version": "3.x",
-    "openmaptiles:mapbox:owner": "openmaptiles",
-    "openmaptiles:mapbox:source:url": "mapbox://openmaptiles.4qljc88t"
-  },
+  "metadata": {},
   "sources": {
-    "openmaptiles": {"type": "vector", "url": "http://localhost:8000/info.json"}
+    "openmaptiles": {
+      "type": "vector",
+      "url": "{{ TILE_URL }}"
+    }
   },
-  "sprite": "http://localhost:8000/sprite",
-  "glyphs": "https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key={key}",
+  "sprite": "{{ SPRITE_URL }}",
+  "glyphs": "{{ GLYPHS_URL }}",
   "layers": [
     {
       "id": "background",
@@ -277,7 +273,7 @@
       },
       "paint": {
         "line-color": "rgba(0,0, 255, 1)",
-        "line-dasharray": [1, 1],
+        "line-dasharray": [3, 3],
         "line-width": {"base": 1.55, "stops": [[4, 1], [20, 10]]}
       }
     },
@@ -802,8 +798,8 @@
         "all",
         ["==", "$type", "Point"],
         ["in", "subclass",
-            "bicycle", "bicycle_rental", "cafe", "drinking_water", "hospital",
-            "post_office", "post_box", "pub", "shelter", "toilets"
+          "bicycle", "bicycle_rental", "cafe", "drinking_water", "hospital",
+          "post_office", "post_box", "pub", "shelter", "toilets"
         ]
       ],
       "layout": {
@@ -823,95 +819,98 @@
         "text-halo-width": 1
       }
     }, {
-      "id": "amenities-bicycle_parking",
-      "type": "circle",
-      "source": "openmaptiles",
-      "source-layer": "poi",
-      "minzoom": 16,
-      "filter": [
-        "all",
-        ["==", "$type", "Point"],
-        ["==", "subclass", "bicycle_parking"]
-      ],
-      "layout": {},
-      "paint": {
-        "circle-color": "rgba(0, 0, 255, 1)"
-      }
+    "id": "amenities-bicycle_parking",
+    "type": "circle",
+    "source": "openmaptiles",
+    "source-layer": "poi",
+    "minzoom": 16,
+    "filter": [
+      "all",
+      ["==", "$type", "Point"],
+      ["==", "subclass", "bicycle_parking"]
+    ],
+    "layout": {},
+    "paint": {
+      "circle-radius": 4,
+      "circle-color": "rgba(0, 0, 255, 1)"
+    }
     }, {
-      "id": "amenities-motorcycle_parking",
-      "type": "circle",
-      "source": "openmaptiles",
-      "source-layer": "poi",
-      "minzoom": 16,
-      "filter": [
-        "all",
-        ["==", "$type", "Point"],
-        ["==", "subclass", "motorcycle_parking"]
-      ],
-      "layout": {},
-      "paint": {
-        "circle-color": "rgba(255, 0, 0, 1)"
-      }
+    "id": "amenities-motorcycle_parking",
+    "type": "circle",
+    "source": "openmaptiles",
+    "source-layer": "poi",
+    "minzoom": 16,
+    "filter": [
+      "all",
+      ["==", "$type", "Point"],
+      ["==", "subclass", "motorcycle_parking"]
+    ],
+    "layout": {},
+    "paint": {
+      "circle-radius": 4,
+      "circle-color": "rgba(255, 0, 0, 1)"
+    }
     }, {
-      "id": "bicycleroutes-lcn",
-      "type": "line",
-      "source": "openmaptiles",
-      "source-layer": "bicycle_routes",
-      "filter": [
-        "all",
-        ["==", "$type", "LineString"],
-        ["==", "network", "lcn"]
-      ],
-      "paint": {
-        "line-color": "rgb(0, 0, 255)",
-        "line-opacity": {"stops": [[8, 1], [11, 0.3]]},
-        "line-width": {"base": 1.4, "stops": [[8, 1], [12, 5]]}
-      }
+    "id": "bicycleroutes-lcn",
+    "type": "line",
+    "source": "openmaptiles",
+    "source-layer": "bicycle_routes",
+    "filter": [
+      "all",
+      ["==", "$type", "LineString"],
+      ["==", "network", "lcn"]
+    ],
+    "paint": {
+      "line-color": "rgb(0, 0, 255)",
+      "line-opacity": {"stops": [[8, 1], [11, 0.3]]},
+      "line-width": {"base": 1.4, "stops": [[8, 1], [12, 5]]}
+    }
     }, {
-      "id": "bicycleroutes-rcn",
-      "type": "line",
-      "source": "openmaptiles",
-      "source-layer": "bicycle_routes",
-      "filter": [
-        "all",
-        ["==", "$type", "LineString"],
-        ["==", "network", "rcn"]
-      ],
-      "paint": {
-        "line-color": "rgb(180, 45, 255)",
-        "line-opacity": {"stops": [[8, 1], [11, 0.5]]},
-        "line-width": {"base": 1.4, "stops": [[8, 1], [12, 5]]}
-      }
+    "id": "bicycleroutes-rcn",
+    "type": "line",
+    "source": "openmaptiles",
+    "source-layer": "bicycle_routes",
+    "filter": [
+      "all",
+      ["==", "$type", "LineString"],
+      ["==", "network", "rcn"]
+    ],
+    "paint": {
+      "line-color": "rgb(180, 45, 255)",
+      "line-opacity": {"stops": [[8, 1], [11, 0.5]]},
+      "line-width": {"base": 1.4, "stops": [[8, 1], [12, 5]]}
+    }
     }, {
-      "id": "bicycleroutes-ncn",
-      "type": "line",
-      "source": "openmaptiles",
-      "source-layer": "bicycle_routes",
-      "filter": [
-        "all",
-        ["==", "$type", "LineString"],
-        ["==", "network", "ncn"]
-      ],
-      "paint": {
-        "line-color": "rgb(255, 0, 0)",
-        "line-opacity": {"stops": [[8, 1], [11, 0.5]]},
-        "line-width": {"base": 1.4, "stops": [[8, 1], [12, 5]]}
-      }
+    "id": "bicycleroutes-ncn",
+    "type": "line",
+    "source": "openmaptiles",
+    "source-layer": "bicycle_routes",
+    "filter": [
+      "all",
+      ["==", "$type", "LineString"],
+      ["==", "network", "ncn"]
+    ],
+    "paint": {
+      "line-color": "rgb(255, 0, 0)",
+      "line-opacity": {"stops": [[8, 1], [11, 0.5]]},
+      "line-width": {"base": 1.4, "stops": [[8, 1], [12, 5]]}
+    }
     }, {
-      "id": "bicycleroutes-icn",
-      "type": "line",
-      "source": "openmaptiles",
-      "source-layer": "bicycle_routes",
-      "filter": [
-        "all",
-        ["==", "$type", "LineString"],
-        ["==", "network", "icn"]
-      ],
-      "paint": {
-        "line-color": "rgb(0, 255, 0)",
-        "line-opacity": {"stops": [[8, 1], [11, 0.5]]},
-        "line-width": {"base": 1.4, "stops": [[8, 1], [12, 5]]}
-      }
-    }],
-  "id": "klokantech-basic"
+    "id": "bicycleroutes-icn",
+    "type": "line",
+    "source": "openmaptiles",
+    "source-layer": "bicycle_routes",
+    "filter": [
+      "all",
+      ["==", "$type", "LineString"],
+      ["==", "network", "icn"]
+    ],
+    "paint": {
+      "line-color": "rgb(0, 255, 0)",
+      "line-opacity": {"stops": [[8, 1], [11, 0.5]]},
+      "line-width": {"base": 1.4, "stops": [[8, 1], [12, 5]]}
+    }
+    }
+  ],
+  "id": "cyclosm"
 }

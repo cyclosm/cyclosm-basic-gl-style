@@ -17,16 +17,30 @@ branch is available
 systematically submitted to OpenMapTiles for each new addition.
 
 
-## Usage
+## Demo
 
-You should update the `sources` key with the URL of your OpenMapTiles
+A demo with tiles generated for
+[Ile-de-France](https://en.wikipedia.org/wiki/%C3%8Ele-de-France) area is
+available
+[here](https://phyks.github.io/cyclosm-basic-gl-style/examples/openlayers.html)
+(using OpenLayers) or
+[here](https://phyks.github.io/cyclosm-basic-gl-style/examples/mapbox.html)
+(using Mapbox GL JS).
+
+
+## Use the style
+
+You should update the `style.json` file and replace
+
+* `{{ TILE_URL }}` with the URL of your OpenMapTiles
 provider.
+* `{{ SPRITE_URL }}` with the URL of the built sprites (see below).
+* `{{ GLYPHS_URL }}` with an URL serving the fonts.
 
-Sprites should be built (see below) and served at the URL specified by the
-`sprites` key in `style.json`. You can use `cd build && python3 -m
-http.server` for instance to serve them at `http://localhost:8000/sprite`
-(`.json`, `.png`) which is the default `sprites` URL.
-
+You can have a look at the [`examples`](examples/) folder for usage examples
+with [OpenLayers](http://openlayers.org/) or [Mapbox GL
+JS](https://www.mapbox.com/mapbox-gl-js/api/) with tiles generated for
+[Ile-de-France](https://en.wikipedia.org/wiki/%C3%8Ele-de-France) area.
 
 ## Build the sprites
 
