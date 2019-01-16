@@ -1,34 +1,51 @@
+---
+---
+
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>CyclOSM - Mapbox GL JS</title>
-        <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.js'></script>
-        <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.css' rel='stylesheet' />
-        <style>
-            body { margin:0; padding:0; }
-            #map { position:absolute; top:0; bottom:0; width:100%; }
-        </style>
-    </head>
-    <body
-        <div id='map'></div>
-        <script>
-            fetch('../style.json').then(response => response.json()).then(
-                (style) => {
-                    // Set URLS, put your access tokens below
-                    style.sources.openmaptiles.url = 'https://api.mapbox.com/v4/phyks.bai042tw.json?access_token='
-                    style.sprite = 'https://maps.tilehosting.com/styles/bright/sprite'
-                    style.glyphs = 'https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key='
+  <head>
+    <meta charset="utf-8" />
+    <title>CyclOSM - Mapbox GL JS</title>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin: 0; padding: 0; }
+        #map { position: absolute; top: 0; bottom: 0; width: calc(100% - 200px); }
+        #legend { position: absolute; right: 10px; width: 180px; }
+        tr>td:first-child { text-align: center; }
+        td { padding: 0.5em; }
+    </style>
+  </head>
+  <body>
+    <div id='map'></div>
+    <div id='legend'>
+        <h2>CyclOSM style</h2>
+        <p>This is a demo of <a href="https://github.com/Phyks/cyclosm-basic-gl-style">the CyclOSM GL style</a> with tiles for <a href="https://en.wikipedia.org/wiki/%C3%8Ele-de-France">Ile-de-France</a> and using <a href="https://www.mapbox.com/mapbox-gl-js/api/">Mapbox GL JS library</a> for the render.</p>
 
-                    new mapboxgl.Map({
-                        container: 'map',
-                        hash: true,
-                        style: style,
-                        center: [2.3717, 48.8340],
-                        zoom: 10,
-                    })
-                }
-            );
-        </script>
-    </body>
+        <p>A detailed legend can be found <a href="./legend.html" target="_blank">here</a>.
+    </div>
+    <script>
+      fetch('../style.json').then(response => response.json()).then(
+        (style) => {
+          var mapboxToken = '{{ site.mapboxToken }}';
+          var maptilerToken = '{{ site.maptilerToken }}';
+          // Set URLS, put your access tokens below
+          style.sources.openmaptiles.url = 'https://api.mapbox.com/v4/phyks.bai042tw.json?secure&access_token=' + mapboxToken
+          style.glyphs = 'https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key=' + maptilerToken
+          style.sprite = 'https://phyks.github.io/cyclosm-basic-gl-style/build/sprite'
+
+          new mapboxgl.Map({
+            container: 'map',
+            hash: true,
+            style: style,
+            center: [2.3717, 48.8340],
+            zoom: 10,
+            attributionControl: false,
+          }).addControl(new mapboxgl.AttributionControl({
+            customAttribution: '<a href="https://www.mapbox.com/about/maps/">© Mapbox</a>'
+          }));
+        }
+      );
+    </script>
+  </body>
 </html>

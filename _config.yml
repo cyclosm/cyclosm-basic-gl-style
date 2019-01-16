@@ -1,1 +1,6 @@
+# This is the configuration file for the generation of the demo
+# See https://phyks.github.io/cyclosm-basic-gl-style/.
+
+mapboxToken: pk.eyJ1IjoicGh5a3MiLCJhIjoiY2pxd3c3NzExMHV1ODN4bnc3emUxajRsMCJ9.FnLx1oRLaM3Nd9aaV646nQ
+maptilerToken: CrAurVLVTKiDz613bMlf
 theme: jekyll-theme-minimal

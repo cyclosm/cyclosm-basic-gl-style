@@ -1,3 +1,6 @@
+---
+---
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -13,24 +16,38 @@
       }
 
       #map {
-        width: 100%;
+        width: calc(100% - 200px);
         height: 100%;
         position: absolute;
         background: #f8f4f0;
+      }
+
+      #legend {
+        position: absolute;
+        right: 10px;
+        width: 180px;
       }
     </style>
   </head>
   <body>
     <div id="map"></div>
+    <div id='legend'>
+        <h2>CyclOSM style</h2>
+        <p>This is a demo of <a href="https://github.com/Phyks/cyclosm-basic-gl-style">the CyclOSM GL style</a> with tiles for <a href="https://en.wikipedia.org/wiki/%C3%8Ele-de-France">Ile-de-France</a> and using <a href="http://openlayers.org/">OpenLayers library</a> for the render.</p>
+
+        <p>A detailed legend can be found <a href="./legend.html" target="_blank">here</a>.
+    </div>
     <script>
       fetch('../style.json').then(response => response.json()).then(
         (style) => {
+          var mapboxToken = '{{ site.mapboxToken }}';
+          var maptilerToken = '{{ site.maptilerToken }}';
           // Set URLS, put your access tokens below
-          style.sources.openmaptiles.url = 'https://api.mapbox.com/v4/phyks.bai042tw.json?access_token='
-          style.glyphs = 'https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key='
-          style.sprite = 'https://maps.tilehosting.com/styles/bright/sprite'
+          style.sources.openmaptiles.url = 'https://api.mapbox.com/v4/phyks.bai042tw.json?secure&access_token=' + mapboxToken
+          style.glyphs = 'https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key=' + maptilerToken
+          style.sprite = 'https://phyks.github.io/cyclosm-basic-gl-style/build/sprite'
 
-          // Default view
+         // Default view
           var zoom = 10;
           var center = ol.proj.fromLonLat([2.3717, 48.8340]);
           var rotation = 0;
@@ -49,6 +66,15 @@
             }
           }
           var map = olms.apply('map', style)
+          // Handle attributions
+          map.getControls().forEach((item) => {
+            if (item instanceof ol.control.Attribution) {
+              item.setCollapsible(false);
+            }
+          })
+          map.addLayer(new ol.layer.Vector({
+            source:new ol.source.Vector({attributions: '<a href="https://www.mapbox.com/about/maps/">© Mapbox</a>'})
+          }));
 
           map.setView(new ol.View({
             center: center,
