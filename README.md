@@ -84,3 +84,11 @@ After you've started Maputnik open the editor on `localhost:8000`.
 ```
 $ maputnik --watch --file style.json
 ```
+
+
+## License
+
+Code is licensed under
+[BSD-3-Clause](https://opensource.org/licenses/BSD-3-Clause) and design is
+licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Full
+details on the license can be found in the [LICENSE.md](LICENSE.md) file.

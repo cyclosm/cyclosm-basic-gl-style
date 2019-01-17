@@ -1,8 +1,12 @@
-Copyright (c) 2016, KlokanTech.com & OpenMapTiles contributors.  
-Copyright (c) 2014, Mapbox.  
+Copyright (c) 2018, Phyks (Lucas Verney).
+
+Modified from https://github.com/openmaptiles/klokantech-basic-gl-style.
+
+Copyright (c) 2016, KlokanTech.com & OpenMapTiles contributors.
+Copyright (c) 2014, Mapbox.
 All rights reserved.
 
-Modifications by KlokanTech.com & OpenMapTiles contributors.  
+Modifications by KlokanTech.com & OpenMapTiles contributors.
 Derived from "Mapbox Open Styles" https://github.com/mapbox/mapbox-gl-styles
 
 # Code license: BSD 3-Clause License
@@ -57,6 +61,6 @@ For printed and static maps a similar attribution should be made in a textual
 description near the image, in the same fashion as if you cite a photograph.
 
 Exceptions to OpenMapTiles attribution requirement can be in a written form granted
-by Klokan Technologies GmbH (info@klokantech.com).  
+by Klokan Technologies GmbH (info@klokantech.com).
 The project contributors grant Klokan Technologies GmbH the license to give such
 exceptions on a commercial basis.
