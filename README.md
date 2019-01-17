@@ -86,6 +86,13 @@ $ maputnik --watch --file style.json
 ```
 
 
+## Sources of inspiration
+
+* [OpenCycleMap](http://opencyclemap.org/)
+* [La Ville à Vélo](http://carte.lavilleavelo.org/)
+* [ADAV Carto](https://carto.droitauvelo.org/)
+
+
 ## License
 
 Code is licensed under
