@@ -1,6 +1,8 @@
 CyclOSM
 =======
 
+**Important note: This GL style was historically the first version of CyclOSM. We shifted back to a more traditional CartoCSS style and the GL style is no longer maintained and left here for historical reasons. For the up to date and latest CyclOSM source code, check out https://github.com/cyclosm/cyclosm-cartocss-style/.**
+
 This is a Mapbox GL basemap style using the vector tile schema of
 [OpenMapTiles](https://github.com/openmaptiles/openmaptiles), with cycling in
 mind.
